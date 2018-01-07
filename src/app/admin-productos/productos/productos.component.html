@@ -1,0 +1,56 @@
+<app-admin-admin></app-admin-admin>
+
+<div class="card">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">PRODUCTOS</h4>
+    <div class="card-body">                
+          <p style="color:rgb(32, 31, 31); font-size:20px;">{{ mensaje }}</p>
+          <h3 style="color:rgb(26, 24, 24);">LISTADO DE PRODUCTOS</h3>
+          <br>
+          <div class="row">
+                <div class="col-sm-6">
+                    <input type="search" class="form-control" placeholder="Buscar un producto.." [formControl]="campoBusqueda"><button pButton type="button" label="Buscar"></button>                                            
+                </div>
+                <div class="col-sm-6">
+                <a class="btn btn-outline-primary float-md-right" routerLink="/admin-productos/addproductos" routerLinkActive="Active">
+                AÑADIR NUEVO PRODUCTO
+                </a>
+                </div><br><br>
+          </div><br>
+          <div *ngIf="noresultados">
+                <h2>NO EXISTE NINGUNA COINCIDENCIA</h2>
+            </div>
+
+            <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+                <img src="../../../assets/62159.gif">
+            </div>
+    <div *ngIf="!cargando">
+        <table class="table table-responsive" style="background-color:rgba(254, 255, 255, 0.788); font-size:18px;">         
+              <thead class="thead-inverse" style="background-color:rgba(230, 234, 236, 0.712);">
+            
+                  <tr class="filters">
+                   <!-- <th>id</th>-->  
+                      <th>PRODUCTO</th>
+                      <th>PROVEEDOR</th>
+                      <th>PRECIO</th>
+                      <th>ESTADO</th>
+                      <th></th>
+                  </tr>
+              </thead>
+              <tbody style="background-color:white;">
+                  <tr *ngFor="let producto of Productos">
+                     <!-- <td>{{producto.id}}</td>-->
+                      <td>{{ producto.descripcion}}</td>
+                      <td>{{ producto.nombre }}</td>
+                      <td>{{ producto.Precio}}</td>
+                      <b><td style="background-color:green; color:white;">{{ producto.Estatus}}</td></b>
+            
+                      <td class="text-center" style="width:250px;">
+                        <button type="button" class="btn btn-outline-primary" routerLink="/admin-productos/editproductos/{{ producto.ID }}">MODIFICAR</button>
+                        <button type="button" class="btn btn-danger" (click)="eliminarProducto(producto.ID)">ELIMINAR</button>
+                    </td>
+                  </tr>
+              </tbody>
+              </table>
+    </div>
+        </div>
+    </div>

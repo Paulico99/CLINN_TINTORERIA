@@ -1,0 +1,78 @@
+<app-admin-admin></app-admin-admin>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <div class="container-fluid-responsive">
+        <div class="card form-group">
+                <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Añadir Producto</h4>
+              <div class="card-body">
+                  <h4 class="card-title">Datos del Producto</h4>
+     <form [formGroup]="registroProducto" (ngSubmit)="onSubmit()">
+            <div class="row">
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup" style="font-size:18px;">
+                                <span class="input-group-addon" id="descripcion" for="descripcion" style="width:120px;">Descripcion</span>
+                    
+                                    <input type="text" class="form-control" id="descripcion" formControlName="descripcion" placeholder="descripcion del Cliente">
+                                    <i class="fa fa-check-circle" *ngIf="registroProducto.controls.descripcion.valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="registroProducto.controls.descripcion.invalid && registroProducto.controls.descripcion.touched"></i>
+
+                        </div>
+                        <p class="alert alert-danger" *ngIf="registroProducto.controls.descripcion.invalid && registroProducto.controls.descripcion.touched">
+                                POR FAVOR INTRODUZCA SU descripcion  !!
+                        </p>
+                    </div>
+                  <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup inputgroup-lg" style="font-size:18px;">
+                        <span class="ui-inputgroup-addon" id="Precio" for="Precio" style="width:120px;">Precio</span>
+              
+                        <input type="number" class="form-control" id="Precio" formControlName="Precio" placeholder="Precio del cliente">
+                        <i class="fa fa-check-circle" *ngIf="registroProducto.controls.Precio.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroProducto.controls.Precio.invalid && registroProducto.controls.Precio.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroProducto.controls.Precio.invalid && registroProducto.controls.Precio.touched">
+                        POR FAVOR INTRODUZCA UN Precio  !!
+                    </p>
+            </div>
+           
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Status</span>
+                        <p-dropdown [options]="Estatus" [(ngModel)]="SelectEstatus" formControlName="Estatus" ></p-dropdown>
+                        </div>
+                    </div>
+                  
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Proveedor</span>
+                     <select class="form-control" id="id_proveedor" formControlName="id_proveedor">
+                         <option value="">SELECCIONE UN PROVEEDOR</option>
+                         <option *ngFor="let id_proveedor of Proveedores" value="{{id_proveedor.Id}}">
+                             {{id_proveedor.nombre}}                           
+                         </option>
+                     </select>
+                     <!--   <p-dropdown [options]="id_proveedor" [(ngModel)]="SelectProveedor" formControlName="id_proveedor"></p-dropdown>
+                     -->
+                    </div>
+                    </div>
+        </div>
+        <div class="col-md-12 text-center"> 
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!registroProducto.valid">Guardar Producto
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroProducto.valid">POR FAVOR COMPLETE TODOS LOS CAMPOS</p>
+        </div>
+          <hr>
+          <button type="submit" class="btn btn-outline-danger text-right" routerLink="/admin-productos/productos" style="font-size:20px;">REGRESAR
+        </button>
+      </form>     
+      <!--
+      <pre>valor del formulario: {{ registroProducto.value | json }}</pre>       
+      <pre>Estado del formulario: {{ registroProducto.status | json }}</pre>       
+      <hr>
+      <pre>{{ cliente | json }}</pre>
+      --> 
+              </div>
+        </div>
+    </div>

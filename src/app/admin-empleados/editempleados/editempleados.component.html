@@ -1,0 +1,184 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+<app-admin-admin></app-admin-admin>
+
+<div class="container-fluid">
+  <div class="card form-group">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Modificar cuenta</h4>
+    <div class="card-body">
+      <h4 class="card-title">Actualizar Empleado</h4>
+      <form [formGroup]="registroEmpleado" (ngSubmit)="onSubmit()">          
+      <div class="row">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup" style="font-size:16px;">
+              <span class="input-group-addon" id="Nombre" for="Nombre" style="width:120px;">Nombre</span>
+
+              <input type="text" class="form-control" id="Nombre" formControlName="Nombre" [(ngModel)]="eempleado.Nombre" placeholder="Nombre del cliente">
+              <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.Nombre.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.Nombre.invalid && registroEmpleado.controls.Nombre.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroEmpleado.controls.Nombre.invalid && registroEmpleado.controls.Nombre.touched">
+              POR FAVOR INTRODUZCA SUS NOMBRES !!
+            </p>
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="RFC" for="RFC" style="width:120px;">RFC</span>
+
+              <input type="text" class="form-control" id="RFC" formControlName="RFC" [(ngModel)]="eempleado.RFC" placeholder="RFC del cliente">
+              <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.RFC.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.RFC.invalid && registroEmpleado.controls.RFC.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroEmpleado.controls.RFC.invalid && registroEmpleado.controls.RFC.touched">
+              POR FAVOR INTRODUZCA SUS RFC !!
+            </p>
+          </div>
+
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="Telefono" for="Telefono" style="width:120px;">Telefono</span>
+
+              <input type="text" class="form-control" id="Telefono" formControlName="Telefono" [(ngModel)]="eempleado.Telefono" placeholder="Telefono del cliente">
+              <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.Telefono.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.Telefono.invalid && registroEmpleado.controls.Telefono.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroEmpleado.controls.Telefono.invalid && registroEmpleado.controls.Telefono.touched">
+              POR FAVOR INTRODUZCA SU Telefono !!
+            </p>
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="NSS" for="NSS" style="width:120px;" >NSS</span>
+
+              <input type="text" class="form-control" id="NSS" formControlName="NSS" [(ngModel)]="eempleado.NSS" placeholder="Numero de seguro social">
+              <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.NSS.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.NSS.invalid && registroEmpleado.controls.NSS.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroEmpleado.controls.NSS.invalid && registroEmpleado.controls.NSS.touched">
+              POR FAVOR INTRODUZCA SU NSS !!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="ui-g-12">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="Direccion" for="Direccion" style="width:120px;">Direccion</span>
+
+              <input type="text" class="form-control" id="Direccion" formControlName="Direccion" [(ngModel)]="eempleado.Direccion" placeholder="Calle, #numero y colonia">
+              <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.Direccion.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.Direccion.invalid && registroEmpleado.controls.Direccion.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroEmpleado.controls.Direccion.invalid && registroEmpleado.controls.Direccion.touched">
+              POR FAVOR INTRODUZCA SU Direccion !!
+            </p>
+          </div>
+          <div class="ui-g-12 ui-md-6">
+              <div class="ui-inputgroup"  style="font-size:18px;">                                
+                 <span class="ui-inputgroup-addon" style="width:120px;">Status</span>
+                  <!--<p-dropdown [options]="Estatus" [(ngModel)]="eempleado.Estatus" formControlName="Estatus" ></p-dropdown>
+                  -->
+                  <select class="form-control" id="Estatus" formControlName="Estatus" [(ngModel)]="eempleado.Estatus">
+                    <option value="">SELECCIONE UN STATUS</option>
+                    <option value='ACTIVO'>ACTIVO</option>
+                    <option value='INACTIVO'>INACTIVO</option>
+                  </select>  
+                  <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.Estatus.valid"></i>
+                  <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.Estatus.invalid && registroEmpleado.controls.Estatus.touched"></i>
+            
+                </div>
+                <p class="alert alert-danger" *ngIf="registroEmpleado.controls.Estatus.invalid && registroEmpleado.controls.Estatus.touched">
+                    POR FAVOR INTRODUZCA SU ESTADO !!
+                  </p>
+            </div>
+          
+            <div class="ui-g-12 ui-md-6">
+                <div class="form-group">
+                  <span class="ui-inputgroup-addon" style="width:120px;">Puesto</span>                                   
+                  <select class="form-control" id="IDPuesto" formControlName="IDPuesto" [(ngModel)]="eempleado.IDPuesto">
+                      <option value="">SELECCIONE UN PROVEEDOR</option>
+                      <option *ngFor="let IDPuesto of Puestos" value="{{IDPuesto.ID}}">
+                          {{IDPuesto.nombre}}
+                      </option>
+                  </select>
+                  <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.IDPuesto.valid"></i>
+                  <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.IDPuesto.invalid && registroEmpleado.controls.IDPuesto.touched"></i>
+                  
+                </div>
+            <p class="alert alert-danger" *ngIf="registroEmpleado.controls.IDPuesto.invalid && registroEmpleado.controls.IDPuesto.touched">
+                POR FAVOR INTRODUZCA SU PUESTO !!
+              </p>
+              
+          </div>
+          
+        </div>
+        <div class="row">
+             <div class="ui-g-12">
+                  <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                          <span class="ui-inputgroup-addon" id="email" for="email" style="width:120px;">Email</span>                    
+                
+                      <input type="text" class="form-control" id="email" [(ngModel)]="eempleado.email" formControlName="email" required email placeholder="ejemplo@sisalia.com">
+                      <p class="alert alert-danger" *ngIf="erroresForm.email">{{ erroresForm.email }} </p>
+                      <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.email.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.email.invalid && registroEmpleado.controls.email.touched"></i>
+
+
+              </div>
+              <p class="alert alert-danger" *ngIf="registroEmpleado.controls.email.invalid && registroEmpleado.controls.email.touched">
+                      POR FAVOR INTRODUZCA UNA DIRECCION DE email CORRECTA !!
+                  </p>
+
+              </div> 
+            <div class="ui-g-12 ui-md-6">
+              <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                  <span class="ui-inputgroup-addon" id="password" for="password" style="width:130px;">Contraseña</span>
+                  <input type="password" class="form-control" id="password" [(ngModel)]="eempleado.password" formControlName="password" placeholder="Contraseña del cliente" />
+                  <p class="alert alert-warning" *ngIf="erroresForm.password">{{ erroresForm.password }} </p>
+                  
+                  <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.password.valid"></i>
+                  <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.password.invalid && registroEmpleado.controls.password.touched"></i>
+
+                </div>
+                <p class="alert alert-danger" *ngIf="registroEmpleado.controls.password.invalid && registroEmpleado.controls.password.touched">
+                    POR FAVOR INTRODUZCA UNA CONTRASEÑA  !!
+                </p>
+                
+            </div>
+          <div class="ui-g-12 ui-md-6">
+              <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                  <span class="ui-inputgroup-addon" id="contrasena" for="contrasena" style="width:130px;">Contraseña</span>
+                  <input  type="password" class="form-control" id="contrasena" formControlName="contrasena" [(ngModel)]="eempleado.contrasena" placeholder="Confirmar Contraseña del cliente" />
+                  <i class="fa fa-check-circle" *ngIf="registroEmpleado.controls.contrasena.valid"></i>
+                  <i class="fa fa-exclamation-circle uncheck" *ngIf="registroEmpleado.controls.contrasena.invalid && registroEmpleado.controls.contrasena.touched"></i>
+
+          </div>
+          <p class="alert alert-danger" *ngIf="registroEmpleado.controls.contrasena.invalid && registroEmpleado.controls.contrasena.touched">
+              LAS CONTRASEÑAS DEBEN DE COINCIDIR , INTENTE DE NUEVO!
+          </p>
+        </div>
+      </div>
+
+
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;" 
+          [disabled]="!registroEmpleado.valid">GUARDAR CAMBIOS
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroEmpleado.valid">POR FAVOR COMPLETE TODOS LOS CAMPOS</p>
+          
+        </div>
+        <hr>
+      
+        <a class="btn btn-outline-danger text-right" routerLink="/admin-empleados/empleados" routerLinkActive="Active">
+          REGRESAR
+          </a>
+      </form>
+      <pre>valor del formulario: {{ registroEmpleado.value | json }}</pre>       
+      <pre>Estado del formulario: {{ registroEmpleado.status | json }}</pre>       
+      <hr>
+      <pre>{{ eempleado | json }}</pre> 
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+nav.navbar {
+    background-color: white;
+}
+.carousel-inner img {
+    height: 500px;
+}
+
+.carousel-inner{
+ height: 550px;
+}
+
+.forms{
+    margin-top: 20px;
+}
+.MyContainer h1, h2, h3, h4{
+    text-align: center;
+}
+
+table.thead-inverse{
+    background-color: rgba(0, 0, 172, 0.712);
+}

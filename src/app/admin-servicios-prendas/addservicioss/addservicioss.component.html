@@ -1,0 +1,82 @@
+<app-admin-admin></app-admin-admin>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <div class="container-fluid-responsive">
+        <div class="card form-group">
+                <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Añadir Servicio</h4>
+              <div class="card-body">
+                  <h4 class="card-title">Datos del servicio</h4>
+     <form [formGroup]="registroServicioo" (ngSubmit)="onSubmit()">
+            <div class="row">
+                    <div class="ui-g-12">
+                        <div class="ui-inputgroup" style="font-size:18px;">
+                                <span class="input-group-addon" id="nombre" for="nombre" style="width:120px;">Descripcion</span>
+                    
+                                    <input type="text" class="form-control" id="nombre" formControlName="nombre" placeholder="nombre del Servicio">
+                                    <i class="fa fa-check-circle" *ngIf="registroServicioo.controls.nombre.valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="registroServicioo.controls.nombre.invalid && registroServicioo.controls.nombre.touched"></i>
+
+                        </div>
+                        <p class="alert alert-danger" *ngIf="registroServicioo.controls.nombre.invalid && registroServicioo.controls.nombre.touched">
+                                POR FAVOR INTRODUZCA UN SERVICIO  !!
+                        </p>
+                    </div>
+                  <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup inputgroup-lg" style="font-size:18px;">
+                        <span class="ui-inputgroup-addon" id="descuento" for="descuento" style="width:120px;">Descuento</span>
+              
+                        <!--<input type="number" class="form-control" id="descuento" formControlName="descuento" placeholder="descuento del servicio">-->
+                        <select class="form-control" id="descuento"   formControlName="descuento">
+                                <option value="">SELECCIONE UN DESCUENTO</option>
+                                <option value=0> 0 %</option>
+                                <option value=0.9>10 %</option>
+                                <option value=0.15>15 %</option>
+                                <option value=0.19>20 %</option>
+                                <option value=0.25>25 %</option>
+                                <option value=0.29>30 %</option>
+                                <option value=0.35>35 %</option>
+                                <option value=0.39>40 %</option>
+                                <option value=0.45>45 %</option>
+                                <option value=0.49>50 %</option>
+                                <option value=0.54>55 %</option>                                
+                                <option value=0.59>60 %</option>
+                                
+                        
+                                </select>
+                        <i class="fa fa-check-circle" *ngIf="registroServicioo.controls.descuento.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroServicioo.controls.descuento.invalid && registroServicioo.controls.descuento.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroServicioo.controls.descuento.invalid && registroServicioo.controls.descuento.touched">
+                        POR FAVOR INTRODUZCA UN DESCUENTO  !!
+                    </p>
+            </div>
+           
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Status</span>
+                        <p-dropdown [options]="estatus" [(ngModel)]="SelectEstatus" formControlName="estatus" ></p-dropdown>
+                        </div>
+                    </div>
+                  
+        </div>
+        <div class="col-md-12 text-center"> 
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!registroServicioo.valid">Guardar Servicio
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroServicioo.valid">POR FAVOR COMPLETE TODOS LOS CAMPOS</p>
+        </div>
+          <hr>
+          <button type="submit" class="btn btn-outline-danger text-right" routerLink="/admin-servicios-prenda/servicios" style="font-size:20px;">REGRESAR
+        </button>
+      </form>     
+      <!--
+      <pre>valor del formulario: {{ registroServicioo.value | json }}</pre>       
+      <pre>Estado del formulario: {{ registroServicioo.status | json }}</pre>       
+      <hr>
+      <pre>{{ cliente | json }}</pre>
+      --> 
+              </div>
+        </div>
+    </div>

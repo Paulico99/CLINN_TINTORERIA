@@ -1,0 +1,148 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container-fluid-responsive">
+<app-admin-admin></app-admin-admin>
+
+  <p-fieldset legend="COMPRAS">
+    <h1 class="center"></h1>
+    <h3 class="first">Compra de Productos</h3>
+    <div class="row">
+            
+                <div class="ui-g-12 ui-md-4">
+                    <div class="ui-inputgroup" style="font-size:18px;">                              
+                        <span class="ui-inputgroup-addon" style="width:130px;">Proveedor</span>   
+                       
+                      <select class="form-control" id="id_proveedor"  [(ngModel)]="id_proveedor">
+                        <option value="">SELECCIONE UN PROVEEDOR</option>
+                        <option *ngFor="let id_proveedor of Proveedores" value="{{id_proveedor.Id}}">
+                           {{id_proveedor.nombre}}                           
+                        </option>
+                    </select>
+                      </div>
+                      <a routerLink="/addproveedores" class="btn btn-outline-primary text-center" style="font-size:20px;">Registrar Proveedor</a>              
+                      
+                </div>
+                <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup" style="font-size:18px;">                              
+                            <span class="ui-inputgroup-addon" style="width:130px;">Producto</span>   
+                           
+                          <select class="form-control" id="id_producto"  [(ngModel)]="id_producto">
+                            <option value="">SELECCIONE UN PRODUCTO</option>
+                            <option *ngFor="let id_producto of Productos" value="{{id_producto.ID}}">
+                               {{id_producto.descripcion}} -  - $ {{id_producto.Precio}}                       
+                            </option>
+                        </select>
+                          </div>
+                          <a routerLink="/admin-productos/addproductos" class="btn btn-outline-primary text-center" style="font-size:20px;">Registrar Producto</a>              
+                          
+                    </div>
+                    <div class="ui-g-12 ui-md-4" >
+                            <div class="ui-inputgroup"  style="font-size:18px;">                                
+                              <span class="ui-inputgroup-addon" style="width:120px;">Cantidad</span>
+                              <input type="number" class="form-control" pInputText placeholder="0" [(ngModel)]="cantidad">
+                            </div>
+                        </div>    
+    </div>
+    <br>
+    <div class="row">
+        <!--
+            <div class="ui-g-12 ui-md-4">
+                <div class="ui-inputgroup" style="font-size:18px;">                              
+                    <span class="ui-inputgroup-addon" style="width:90px;">Precio</span>
+                    <span class="ui-inputgroup-addon">$</span>  
+                    <input type="number" class="form-control"  style=" width:300px;" id="precio" required  placeholder="0">
+                    <span class="ui-inputgroup-addon">.00</span>      
+                    
+                </div>
+            </div>
+        -->
+            <div class="ui-g-12 ui-md-4">
+                 <div class="ui-inputgroup" style="font-size:18px;">                                                              
+                    <span class="ui-inputgroup-addon" style="width:90px;">Fecha</span>                        
+                    <p-calendar [(ngModel)]="date10">
+                        <ng-template pTemplate="date" let-date>
+                            <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#7cc67c' : 'inherit'}" style="border-radius:50%">{{date.day}}</span>
+                        </ng-template>
+                    </p-calendar>
+                 </div>
+            </div>
+            
+                <div class="ui-g-12 ui-md-4">
+                        <div class="ui-inputgroup" style="font-size:18px;">                              
+                                <span class="ui-inputgroup-addon" style="width:130px;">IVA</span>   
+                               
+                              <select class="form-control" id="iva"  [(ngModel)]="iva">
+                                <option value="">SELECCIONE UN %IVA</option>
+                                <option value=0> 0 %</option>
+                                <option value=0.11>11 %</option>
+                                <option value=0.16>16 %</option>
+                            </select>
+                              </div>
+                </div> 
+                <div class="ui-g-12 ui-md-4">
+                        
+                    <button href="#" class="btn btn-outline-primary"  (click)="agregar();" (click)="limpiar()" style="font-size:20px;"><i class="fa fa-plus-square" aria-hidden="true"></i>
+                        AGREGAR</button>                       
+                        
+                
+                </div>                       
+        </div>
+        <h4 class="center" style="text-transform: uppercase;" *ngIf="id_proveedor">FOLIO ::: {{id_proveedor}} PROVEEDOR ::: {{get_nombre_proveedores(id_proveedor,i)}}{{proveedornombre[i]}} </h4>           
+        
+        <hr>
+        <h3>Detalle de Compra</h3>
+        <div class="row">
+                <div class="ui-g-12 ui-md-12">
+                    <table class="table table-responsive" style="background-color:rgba(254, 255, 255, 0.788); font-size:18px;">         
+                        <thead class="thead-inverse" style="background-color:rgba(230, 234, 236, 0.712);">
+                          <tr align="center"  class="filters">
+                            <th>ID</th>
+                            <th>PRODUCTO</th>
+                            <th>PROVEEDOR</th>
+                            <th>PRECIO</th>
+                            <th>CANTIDAD</th> 
+                            <th>TOTAL</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <br>
+                        <tbody style="background-color:white;">
+                                <tr *ngFor="let compra of detalle;let i= index" >
+                                  <td (click)="select(i)">{{ i }}</td>
+                                  <td >{{get_name_producto(compra.id_producto,i)}}{{productonombre[i]}}</td>
+                                  <td> {{get_nombre_proveedores(compra.id_proveedor,i)}}{{proveedornombre[i]}} </td>                    
+                                  <td>$ {{get_precio_producto(compra.id_producto,i)}}{{productoprecio[i]}}</td>
+                                  <td>{{compra.cantidad}}</td> 
+                                  <td><b>$ {{get_precio_producto(compra.id_producto,i)}}{{(productoprecio[i] * compra.cantidad)}}</b></td>
+                                  <td><button type="button" class="btn btn-danger" (click)="eliminar()">ELIMINAR</button>
+                                  </td>
+                                </tr>
+                              </tbody>
+                     </table>
+                </div>
+        </div>
+        <hr>
+        <div class="row">
+                
+                 <div class="ui-g-12 ui-md-6">
+                      <div class="ui-inputgroup" style="font-size:18px;">                                                              
+                         <span class="ui-inputgroup-addon" style="width:90px;">IVA</span>                        
+                         <input type="number" class="form-control"  style=" width:300px;" id="iva"  [(ngModel)]="totaliva" disabled required  placeholder="0">
+                         <span class="ui-inputgroup-addon">.00</span>    
+                      </div>
+                 </div>
+                 <div class="ui-g-12 ui-md-6">
+                         <div class="ui-inputgroup" style="font-size:20px;">                             
+                                 <span class="ui-inputgroup-addon" style="width:110px;">IMPORTE</span>                        
+                                 <input type="text" class="form-control"  style=" width:300px;" id="importe" [(ngModel)]="df"  disabled required  placeholder="$10,500">
+                                 <span class="ui-inputgroup-addon">.00</span>    
+                         </div>
+                     </div>
+             </div>
+        <div class="ui-g-12">
+                <div class="ui-btn" style="font-size:20px;">                             
+                        <a href="#" class="btn btn-outline-primary" style="font-size:20px;">$ Pagar</a>
+                </div>
+            </div>
+            <br>
+  </p-fieldset>
+</div>

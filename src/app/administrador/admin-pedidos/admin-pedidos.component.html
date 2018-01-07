@@ -1,0 +1,112 @@
+<app-admin-admin></app-admin-admin>
+
+<div class="card">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Pedidos</h4>
+    <div class="card-body">
+      <h4 class="card-title">Lista de los pedidos</h4>
+      <div class="row">
+          <div class="col-sm-6">
+              <input type="search" class="form-control" placeholder="Buscar un pedido.." [formControl]="campoBusqueda"><button pButton type="button" label="Buscar"></button>                                            
+          </div>
+          <div class="col-sm-6">
+            <a class="btn btn-outline-primary float-md-right" style="font-size:20px;" routerLink="/admin-ventas/addventas" routerLinkActive="Active">
+              AÑADIR NUEVA VENTA</a>
+          </div><br><br>
+      </div><br>
+      <div *ngIf="noresultados">
+          <h2>NO EXISTE NINGUNA COINCIDENCIA</h2>
+      </div>
+      <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+          <img src="../../../assets/62159.gif">
+      </div>
+  <div *ngIf="!cargando">
+    <div *ngIf="resultados">
+      <div role="form">
+          <table class="table table-responsive" style="background-color:rgba(254, 255, 255, 0.788); font-size:18px;">
+              <thead class="thead-inverse" style="background-color:rgba(230, 234, 236, 0.712);">
+                <tr>
+                  <th>FOLIO</th>
+                  <th>CLIENTE</th>
+                  <th>TOTAL</th>
+                  <th>ABONO</th>
+                  <th>ESTADO</th>                                    
+                  <th>ENTREGA</th>
+                  <th>PAGO</th>
+                  <th></th>
+                  
+                </tr>
+              </thead>
+            
+              <tbody style="font-size:18px;">
+                <tr *ngFor="let venta of Ventas">
+                    <td>{{venta.ID}}</td>
+                    <td>{{ venta.email}}</td>
+                    <td>$ {{ venta.Total}}</td>                    
+                    <td>$ {{ venta.Abono}}</td>
+                    <b><td style="background-color:red; color:white;">{{venta.estatus_servicio}}</td></b>
+                    
+                    <td>{{ venta.entrega}}</td>
+                    
+                    <b><td style="background-color:green; color:white;">{{ venta.estatus}}</td></b>
+                    
+                    <td class="text-center" style="width:250px;">    
+                      <button type="button" class="btn btn-outline-success" routerLink="/admin-ventas/editventas/{{ venta.ID }}" style="font-size:20px;">Modificar</button>
+                    </td>
+                    
+                </tr>
+              </tbody>
+        
+            </table>
+      </div>
+      </div>
+      </div>
+      <div class="col-md-12 text-center btn">
+        <!--<a href="#" class="btn btn-outline-primary" style="font-size:20px;">Facturar</a>-->
+        <a href="#" class="btn btn-danger" style="font-size:20px;">Regresar</a>
+        
+      </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModal3Label">Pagar / Abono</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        
+        <div class="modal-body">
+          <form [formGroup]="registroVenta" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="ui-g-12">
+                  <div class="form-group">
+                      
+                    <div class="ui-inputgroup" style="font-size:18px;">
+                      <b><span class="input-group-addon" id="Total" for="Total" style="width:120px;">Total a Pagar </span></b>
+                      <input type="number" class="form-control" id="Total" formControlName="Total" [(ngModel)]="Total" disabled placeholder="$.00">
+                      
+                    </div>
+                  </div>
+                <br>
+                <div class="form-group">
+                    
+                    <div class="ui-inputgroup" style="font-size:18px;">
+                      <span class="input-group-addon" id="pagar" for="pagar" style="width:120px;">Pago / Abono </span>
+                      <input type="number" class="form-control" id="Abono" formControlName="Total" [(ngModel)]="Total" placeholder=".00">
+                      
+                    </div>
+                  </div>
+              </div>
+            </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-outline-success">$ Pagar</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

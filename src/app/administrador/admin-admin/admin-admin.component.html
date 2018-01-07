@@ -1,0 +1,136 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+    
+<ul class="nav nav-pills nav-tabs nav-fill nav-justified" *ngIf="isAuth() && isAdmin()">
+    <!--
+    <li class="nav-item" *ngIf="isAuth()">
+      <a class="nav-link "  routerLink="/administrador/venta-servicio" style="font-size:18px;"><i class="fa fa-user" aria-hidden="true"></i> Ventas</a>
+    </li>
+-->
+    <li class="nav-item dropdown" *ngIf="isAuth() && isAdmin()">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink2" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i> Ventas
+            </a>
+            <div class="dropdown-menu" style="font-size:18px;" aria-labelledby="navbarDropdownMenuLink2">
+              <a class="dropdown-item" style="font-size:18px;" routerLink="/administrador/venta-servicio"><i class="fa fa-print" aria-hidden="true"></i> Venta Pedido</a>
+              <a class="dropdown-item" style="font-size:18px;" routerLink="/administrador/admin-pedidos"><i class="fa fa-money" aria-hidden="true"></i> Pedidos</a>
+              
+            </div>
+          </li>
+
+    <li class="nav-item dropdown" *ngIf="isAuth() && isAdmin()">
+            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
+            </a>
+            <div class="dropdown-menu" style="font-size:18px;" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" style="font-size:18px;" routerLink="/admin-compras/facturas"><i class="fa fa-print" aria-hidden="true"></i> Facturas</a>
+              <a class="dropdown-item" style="font-size:18px;" routerLink="/admin-proveedores/proveedores"><i class="fa fa-list-alt" aria-hidden="true"></i> Proveedores</a>
+              <a class="dropdown-item" style="font-size:18px;" routerLink="/admin-compras/compras" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Presupuesto</a>
+            </div>
+          </li>
+    <!--
+    <li class="nav-item" *ngIf="isAuth()">
+      <a class="nav-link" routerLink="/admin-compras/compras" style="font-size:18px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras</a>
+    </li>
+    
+    <li class="nav-item" *ngIf="isAuth()">
+            <a class="nav-link" routerLink="/admin-compras/facturas" style="font-size:18px;"><i class="fa fa-print" aria-hidden="true"></i> Facturas</a>
+          </li>
+        
+    <li class="nav-item" *ngIf="isAuth()">
+      <a class="nav-link " routerLink="/administrador/admin-pedidos" style="font-size:18px;"><i class="fa fa-money" aria-hidden="true"></i> Pedidos</a>
+    </li>
+
+    <li class="nav-item" *ngIf="isAuth()">
+        <a class="nav-link " routerLink="/admin-proveedores/proveedores" style="font-size:18px;"><i class="fa fa-list-alt" aria-hidden="true"></i> Proveedor</a>
+    </li>
+-->
+    <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
+        <a class="nav-link " routerLink="/admin-empleados/empleados" style="font-size:18px;"><i class="fa fa-address-book-o" aria-hidden="true"></i> Empleados</a>
+    </li>
+    <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
+        <a class="nav-link " routerLink="/admin-clientes/clientes" style="font-size:18px;"><i class="fa fa-id-card-o" aria-hidden="true"></i> Clientes </a>
+      </li>
+      <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
+        <a class="nav-link " routerLink="/admin-productos/productos" style="font-size:18px;"><i class="fa fa-tags" aria-hidden="true"></i> Producto</a>
+      </li>
+      
+      <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
+          <a class="nav-link" routerLink="/admin-servicios/servicios"  style="font-size:18px;"><i class="fa fa-shopping-bag" aria-hidden="true"></i> Prendas</a>
+      </li>
+
+      <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
+            <a class="nav-link" routerLink="/admin-servicios-prenda/servicios"  style="font-size:18px;"><i class="fa fa-list" aria-hidden="true"></i> Servicios</a>
+        </li>
+
+        
+  </ul>
+  <br>
+  <!--<div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+        <img src="../../../assets/62159.gif">
+    </div>
+-->
+  <!--
+  <h1 class="text-center">B I E N V E N I D O</h1>
+  <app-galeria-fotos></app-galeria-fotos>
+  -->
+  <!--
+  <h3  style="font-size:25px; color:red;" class="text-left">QUE ONDAS MARIO</h3>
+  <span class="ui-float-label" style="font-size:25px; color:red;">
+      <input id="float-input" type="text" size="30" pInputText> 
+      <label for="float-input">NOMBRE DEL BATO</label>
+  </span>
+  
+  <h3 class="first">Addons</h3>
+  <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+              <input type="text" pInputText placeholder="Username">         
+          </div>
+      </div>
+      
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">$</span>
+              <input type="text" pInputText placeholder="Price">   
+              <span class="ui-inputgroup-addon">.00</span>      
+          </div>
+      </div>
+              
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <span class="ui-inputgroup-addon">www</span>
+              <input type="text" pInputText placeholder="Website">      
+          </div>
+      </div>
+  </div>
+  <h3 class="first">Single</h3>
+  <p-dropdown [options]="cities" [(ngModel)]="selectedCity" placeholder="Select a City"></p-dropdown>
+  <p>Selected City: {{selectedCity ? selectedCity.name : 'none'}}</p>
+
+  <h3>Button Addons</h3>
+  <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <button pButton type="button" label="Search"></button>
+              <input type="text" pInputText placeholder="Keyword">         
+          </div>
+      </div>
+      
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <input type="text" pInputText placeholder="Keyword">   
+              <button pButton type="button" icon="fa-search" class="ui-button-secondary"></button>      
+          </div>
+      </div>
+              
+      <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <button pButton type="button" icon="fa-check" class="ui-button-success"></button>    
+              <input type="text" pInputText placeholder="Vote">   
+              <button pButton type="button" icon="fa-close" class="ui-button-danger"></button>      
+          </div>
+      </div>
+  </div>
+-->

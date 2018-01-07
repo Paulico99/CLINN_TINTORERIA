@@ -1,0 +1,123 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+<app-admin-usuario></app-admin-usuario>
+<div class="container-fluid-responsive">
+        <div class="card form-group">
+                <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">General</h4>
+              <div class="card-body">
+                  <h4 class="card-title">Datos del usuario</h4>
+      
+     <form [formGroup]="registroCliente" name="datos" id="datos" (ngSubmit)="onSubmit()">
+        <div class="row">
+                <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup" style="font-size:16px;">
+                    <span class="ui-inputgroup-addon" id="nombres" for="nombres"  style="width:120px;">Nombres</span>
+                        
+                        <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Pulsoro"  disabled>
+                        
+                        <i class="fa fa-check-circle" *ngIf="registroCliente.controls.nombres.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.nombres.invalid && registroCliente.controls.nombres.touched"></i>
+         
+               </div>
+               <p class="alert alert-danger" *ngIf="registroCliente.controls.nombres.invalid && registroCliente.controls.nombres.touched">
+                       POR FAVOR INTRODUZCA SUS NOMBRES  !!
+               </p>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup" style="font-size:16px;">
+                        <span class="ui-inputgroup-addon" id="apellidos" for="apellidos"  style="width:120px;">Apellidos</span>
+              
+                        <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Soto" disabled>
+                        <i class="fa fa-check-circle" *ngIf="registroCliente.controls.apellidos.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.apellidos.invalid && registroCliente.controls.apellidos.touched"></i>
+
+                        <p class="alert alert-danger" *ngIf="registroCliente.controls.apellidos.invalid && registroCliente.controls.apellidos.touched">
+                                POR FAVOR INTRODUZCA SUS APELLIDOS  !!
+                            </p>
+                    </div>
+            </div>
+        
+            <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="Telefono" for="Telefono"  style="width:120px;">Telefono</span>                
+                           
+                                <input type="text" class="form-control" id="telefono"  formControlName="telefono" >
+                                <i class="fa fa-check-circle" *ngIf="registroCliente.controls.telefono.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.telefono.invalid && registroCliente.controls.telefono.touched"></i>
+                               
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.telefono.invalid && registroCliente.controls.telefono.touched">
+                            POR FAVOR INTRODUZCA SU TELEFONO  !!
+                    </p>
+                   
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="correo" for="correo"  style="width:120px;">Correo</span>                    
+                   
+                        <input type="text" class="form-control" id="correo" ngModel formControlName="correo" required email placeholder="pul123456@hotmail.com">
+                        <i class="fa fa-check-circle" *ngIf="registroCliente.controls.correo.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.correo.invalid && registroCliente.controls.correo.touched"></i>
+        
+                        
+                </div>
+                <p class="alert alert-danger" *ngIf="registroCliente.controls.correo.invalid && registroCliente.controls.correo.touched">
+                        POR FAVOR INTRODUZCA UNA DIRECCION DE CORREO CORRECTA !!
+                    </p>
+           </div> 
+        </div>
+        <div class="row">
+        <div class="ui-g-12">
+                <div class="ui-inputgroup" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="direccion" for="direccion"  style="width:120px;">Direccion</span>
+               
+                            <input type="text" class="form-control" id="direccion" formControlName="direccion" placeholder="la uasteca #1234 entre 10 de mayo y lopez">
+                            <i class="fa fa-check-circle" *ngIf="registroCliente.controls.direccion.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.direccion.invalid && registroCliente.controls.direccion.touched"></i>
+                           
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.direccion.invalid && registroCliente.controls.direccion.touched">
+                            POR FAVOR INTRODUZCA SU DIRECCION  !!
+                    </p>
+            </div>  
+            
+                <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="contrasena" for="contrasena"  style="width:120px;">Contraseña</span>
+                            <input type="password" class="form-control" id="contrasena" formControlName="contrasena" placeholder="*********">
+                            <i class="fa fa-check-circle" *ngIf="registroCliente.controls.contrasena.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.contrasena.invalid && registroCliente.controls.contrasena.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.contrasena.invalid && registroCliente.controls.contrasena.touched">
+                            POR FAVOR INTRODUZCA UNA CONTRASEÑA  !!
+                        </p>
+            </div> 
+            <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="recontrasena" for="recontrasena"  style="width:200px;">Repita Contraseña</span>
+                            <input type="password" class="form-control" id="recontrasena" formControlName="recontrasena" placeholder="*********">
+                            <i class="fa fa-check-circle" *ngIf="registroCliente.controls.recontrasena.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.recontrasena.invalid && registroCliente.controls.recontrasena.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.recontrasena.invalid && registroCliente.controls.recontrasena.touched">
+                            POR FAVOR REPITA LA CONTRASEÑA  !!
+                        </p>
+            </div> 
+        </div>
+        <div class="col-md-12 text-center btn">
+                <!--<a href="#" class="btn btn-outline-primary" style="font-size:20px;">Actualizar</a>
+                -->
+                <a href="#" class="btn btn-danger" style="font-size:20px;">Cerrar Sesion</a>
+                
+              </div>
+      </form>      
+    </div>
+  </div>
+</div>
+
+
+
+    
+  

@@ -1,0 +1,46 @@
+<!--
+<nav class="sidebar" style=" max-width:15%;"  [ngClass]="{sidebarPushRight: isActive}">
+    <ul class="list-group" style="height:50%">
+        <a [routerLink]="['/unidades']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            &nbsp;Cliente
+        </a>
+        <a [routerLink]="['/conductores']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            &nbsp;Pedidos
+        </a>
+        <a [routerLink]="['/clientes']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            &nbsp;Abono
+        </a>
+        <a [routerLink]="['/sucursales']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            &nbsp;Facturacion
+        </a>
+        <a [routerLink]="['/cotizaciones']" [routerLinkActive]="['router-link-active']" class="list-group-item">
+            &nbsp;Servicios
+         </a>
+
+    </ul>
+</nav>
+-->
+<ul class="nav nav-pills nav-tabs nav-fill nav-justified">
+    <li class="nav-item" *ngIf="isAuth()">
+      <a class="nav-link" routerLink="/Usuarios/datos-usuario" style="font-size:20px;"><i class="fa fa-user" aria-hidden="true"></i> Datos Cliente</a>
+    </li>
+    <li class="nav-item" *ngIf="isAuth()">
+      <a class="nav-link" routerLink="/Usuarios/pedidos" style="font-size:20px;"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Pedidos</a>
+    </li>
+    <!--<li class="nav-item">
+      <a class="nav-link disabled" routerLink="/administrador/venta-servicio" style="font-size:20px;"><i class="fa fa-money" aria-hidden="true"></i> Abono</a>
+    </li>-->
+    <li class="nav-item" *ngIf="isAuth()">
+        <a class="nav-link"  routerLink="/Usuarios/precio" style="font-size:20px;"><i class="fa fa-usd" aria-hidden="true"></i> Precios</a>
+    </li>
+    <!--
+    <li class="nav-item" *ngIf="isAuth()">
+        <a class="nav-link disabled" href="#!" style="font-size:20px;">Servicios</a>
+      </li>
+    -->
+      <li class="nav-item" *ngIf="isAuth()">
+          <a class="nav-link" routerLink="/Usuarios/iniciosesion"><button class="btn btn-outline-danger btn-md" id="salir"  style="width:200px; font-size:20px;" (click)="onLogout()"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</button></a>
+      </li>
+  </ul>
+<!--<app-datos-usuario></app-datos-usuario>-->
+

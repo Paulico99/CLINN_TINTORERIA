@@ -1,0 +1,125 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+<app-admin-admin></app-admin-admin>
+
+<div class="container-fluid">
+  <div class="card form-group">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Crear Factura</h4>
+    <div class="card-body">
+      <h4 class="card-title">Añadir Factura</h4>
+      <form [formGroup]="registroFactura" (ngSubmit)="onSubmit()">
+       <div class="row">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup" style="font-size:16px;">
+                <span class="ui-inputgroup-addon" style="width:150px;">Proveedor</span>   
+                <select class="form-control" id="id_proveedor" [(ngModel)]="id_proveedor" formControlName="id_proveedor" >
+                  <option value="">SELECCIONE UN PROVEEDOR</option>
+                  <option *ngFor="let id_proveedor of Proveedores"  value="{{id_proveedor.Id}}">
+                  {{id_proveedor.nombre}}
+                  </option>
+              </select>
+              <i class="fa fa-check-circle" *ngIf="registroFactura.controls.id_proveedor.valid" ></i>
+              <i class="fa fa-exclamation-circle uncheck"  *ngIf="registroFactura.controls.id_proveedor.invalid && registroFactura.controls.id_proveedor.touched"></i>
+              
+              
+            </div>
+            <p class="alert alert-danger"  *ngIf="registroFactura.controls.id_proveedor.invalid && registroFactura.controls.id_proveedor.touched">
+              POR FAVOR SELECCIONA UN PROVEEDOR !!
+            </p>
+            <a routerLink="/add-registrar" class="btn btn-outline-primary text-center" style="font-size:20px;">Registrar Proveedor</a>              
+            
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                <span class="ui-inputgroup-addon" style="width:150px;">Producto</span>   
+                <select class="form-control" id="id_producto" [(ngModel)]="id_producto" formControlName="id_producto" >
+                  <option value="">SELECCIONE UN PRODUCTO</option>
+                  <option *ngFor="let id_producto of Productos"  value="{{id_producto.ID}}">
+                  {{id_producto.descripcion}}
+                  </option>
+              </select>
+              <i class="fa fa-check-circle" *ngIf="registroFactura.controls.id_producto.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroFactura.controls.id_producto.invalid && registroFactura.controls.id_producto.touched" ></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroFactura.controls.id_producto.invalid && registroFactura.controls.id_producto.touched">
+              POR FAVOR  SELECCIONE UN PRODUCTO !!
+            </p>
+            <a routerLink="/admin-productos/addproductos" class="btn btn-outline-primary text-center" style="font-size:20px;">Registrar Producto</a>              
+            
+          </div>
+
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:17px;">
+                                                                             
+                    <span class="ui-inputgroup-addon" style="width:90px;">Fecha</span>
+                    <p-calendar [(ngModel)]="date10" [locale]="es" dateFormat="yy/mm/dd" formControlName="fecha"></p-calendar>
+                    
+                    <!--
+                    <p-calendar [(ngModel)]="date10" dateFormat="yy.mm.dd" formControlName="fecha">
+                        <ng-template pTemplate="date" let-date>
+                            <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#7cc67c' : 'inherit'}" style="border-radius:50%">{{date.day}}</span>
+                        </ng-template>
+                    </p-calendar>
+                  -->
+        
+            </div>
+      
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="iva" for="iva" style="width:120px;">IVA</span>
+              <select class="form-control" id="iva" formControlName="iva">
+                  <option value="">Seleccione...</option>
+                  <option value=0> 0 %</option>
+                  <option value=0.11>11 %</option>
+                  <option value=0.16>16 %</option>
+                  </select>
+              <i class="fa fa-check-circle" *ngIf="registroFactura.controls.iva.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroFactura.controls.iva.invalid && registroFactura.controls.iva.touched"></i>
+
+
+            </div>
+            <p class="alert alert-danger" *ngIf="registroFactura.controls.iva.invalid && registroFactura.controls.iva.touched">
+              POR FAVOR INTRODUZCA SU IVA  !!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+            <div class="ui-g-12 ui-md-6">
+                <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                  <span class="ui-inputgroup-addon" id="subtotal" for="subtotal" style="width:120px;">Subtotal</span>
+    
+                  <input type="number" class="form-control" id="subtotal" formControlName="subtotal" placeholder="subtotal">
+          
+    
+                </div>
+            
+              </div>
+              <div class="ui-g-12 ui-md-6">
+                  <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                    <span class="ui-inputgroup-addon" id="total" for="total" style="width:120px;">Total</span>
+      
+                    <input type="number" class="form-control" id="total" formControlName="total" placeholder="total">
+                
+      
+                  </div>
+             
+                </div>
+        </div>
+        
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!registroFactura.valid"
+          >CREAR FACTURA
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroFactura.valid"> POR FAVOR COMPLETE LOS CAMPOS!!</p>
+        </div>
+        <hr>
+      
+        <a class="btn btn-outline-danger text-right" routerLink="/admin-compras/facturas" routerLinkActive="Active">
+          REGRESAR
+          </a>
+      </form>
+    </div>
+  </div>
+</div>

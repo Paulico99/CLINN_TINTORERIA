@@ -1,0 +1,77 @@
+<app-admin-admin></app-admin-admin>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <div class="container-fluid-responsive">
+        <div class="card form-group">
+                <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Abono</h4>
+              <div class="card-body">
+                  <h4 class="card-title">Datos del Abono</h4>
+     <form [formGroup]="registroVenta" (ngSubmit)="onSubmit()">
+            <div class="row">
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup" style="font-size:18px;">
+                                <span class="input-group-addon" id="id_cliente" for="id_cliente" style="width:120px;">Cliente</span>
+                                    <input type="text" class="form-control" id="id_cliente"  formControlName="id_cliente" [(ngModel)]="ventaa.id_cliente" >
+                                 
+                        </div>
+                    </div>
+                  <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup inputgroup-lg" style="font-size:15px;">
+                            <span class="ui-inputgroup-addon" id="Total" for="Total" style="width:120px;">Total a Pagar</span>
+                            <input type="number" class="form-control" id="Total"  formControlName="Total" [(ngModel)]="ventaa.Total" >
+                           
+                        </div>
+                    
+                    </div>
+
+                    <div class="ui-g-12 ui-md-6 text-center">
+                        <div class="ui-inputgroup inputgroup-lg" style="font-size:15px;">
+                            <span class="ui-inputgroup-addon" id="Abono" for="Abono" style="width:120px;">Abono / Pago</span>
+                            <input type="number" class="form-control" id="Abono" formControlName="Abono" [(ngModel)]="ventaa.Abono" >
+                            <i class="fa fa-check-circle" *ngIf="registroVenta.controls.Abono.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroVenta.controls.Abono.invalid && registroVenta.controls.Abono.touched"></i>
+    
+                        </div>
+                        <p class="alert alert-danger" *ngIf="registroVenta.controls.Abono.invalid && registroVenta.controls.Abono.touched">
+                            POR FAVOR INTRODUZCA UN ABONO  !!
+                        </p>
+                    </div>
+                    <!--
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup inputgroup-lg" style="font-size:15px;">
+                            <span class="ui-inputgroup-addon" id="cambio" for="cambio" style="width:120px;">Cambio</span>
+                            <input type="number" class="form-control" id="cambio" disabled>
+                            <i class="fa fa-check-circle" *ngIf="registroVenta.controls.cambio.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroVenta.controls.cambio.invalid && registroVenta.controls.cambio.touched"></i>
+    
+                        </div>
+                    </div>
+           
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Status</span>
+                        <p-dropdown [options]="estatus"  formControlName="estatus" ></p-dropdown>
+                        </div>
+                    </div>
+                  -->
+        </div>
+        <div class="col-md-12 text-center"> 
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!registroVenta.valid">$ Guardar Abono
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroVenta.valid">POR FAVOR COMPLETE TODOS LOS CAMPOS</p>
+        </div>
+          <hr>
+          <button type="submit" class="btn btn-outline-danger text-right" routerLink="/administrador/admin-pedidos" style="font-size:20px;">REGRESAR
+        </button>
+      </form>     
+      
+      <pre>valor del formulario: {{ registroVenta.value | json }}</pre>       
+      <pre>Estado del formulario: {{ registroVenta.status | json }}</pre>       
+      <hr>
+      <pre>{{ ventaa | json }}</pre>
+      
+              </div>
+        </div>
+    </div>

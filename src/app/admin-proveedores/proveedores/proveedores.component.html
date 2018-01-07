@@ -1,0 +1,60 @@
+<app-admin-admin></app-admin-admin>
+
+<div class="card">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Proveedores</h4>
+    <div class="card-body">                
+          <p style="color:rgb(32, 31, 31); font-size:20px;">{{ mensaje }}</p>
+          <h3 style="color:rgb(26, 24, 24);">LISTADO DE PROVEEDORES</h3>
+          <br>
+          <div class="row">
+                <div class="col-sm-6">
+                    <input type="search" class="form-control" placeholder="Buscar un proveedor.." [formControl]="campoBusqueda"><button pButton type="button" label="Buscar"></button>                                            
+                </div>
+                <div class="col-sm-6">
+                    <a class="btn btn-outline-primary float-md-right" routerLink="/addproveedores" routerLinkActive="Active">
+                    AÑADIR NUEVO PROVEEDOR
+                    </a><br><br>
+                </div>
+          </div><br><br>
+                <div *ngIf="noresultados">
+                        <h2>NO EXISTE NINGUNA COINCIDENCIA</h2>
+                    </div>
+                    <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+                            <img src="../../../assets/62159.gif">
+                        </div>
+    <div *ngIf="!cargando">
+      <div *ngIf="resultados">                    
+        <table class="table table-responsive" style="background-color:rgba(254, 255, 255, 0.788); font-size:18px;">         
+              <thead class="thead-inverse" style="background-color:rgba(230, 234, 236, 0.712);">
+            
+                  <tr class="filters">
+                      <th>NOMBRE</th>
+                      <th>RFC</th>
+                      <th>CORREO</th>
+                      <th>TELEFONO</th>
+                      <th>DIRECCION</th>
+                      <th>STATUS</th>
+                      <th style="width:400px;" ></th>
+                  </tr>
+              </thead>
+
+
+          <tbody style="background-color:white;">
+              <tr *ngFor="let proveedor of Proveedores">
+                  <td>{{ proveedor.nombre}}</td>
+                  <td>{{ proveedor.RFC}}</td>
+                  <td><a href="mailto:{{ proveedor.correo }}">{{proveedor.correo}}</a></td>
+                  <td style="width:150px;">{{ proveedor.Telefono }}</td>
+                  <td>{{ proveedor.Direccion}}</td>
+                  <b><td style="background-color:green; color:white;">{{ proveedor.Estatus}}</td></b>
+                  <td class="text-center" style="width:350px;">
+                  <button type="button" class="btn btn-outline-primary" routerLink="/admin-proveedores/editproveedores/{{ proveedor.Id }}">MODIFICAR</button>
+                  <button type="button" class="btn btn-danger" (click)="eliminarProveedores(proveedor.Id)">ELIMINAR</button>
+                  </td>
+                </tr>
+          </tbody>
+          </table>
+      </div>
+    </div>
+    </div>
+</div>

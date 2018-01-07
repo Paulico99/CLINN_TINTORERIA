@@ -1,0 +1,154 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+<app-admin-admin></app-admin-admin>
+
+<div class="container-fluid">
+  <div class="card form-group">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Actualizar cuenta</h4>
+    <div class="card-body">
+      <h4 class="card-title">Modificar Proveedor</h4>
+      <form [formGroup]="ProveedoresForm" (ngSubmit)="onSubmit()">
+       <div class="row">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup" style="font-size:16px;">
+              <span class="input-group-addon" id="nombre" for="nombre" style="width:120px;">nombre</span>
+
+              <input type="text" class="form-control" id="nombre"  formControlName="nombre" [(ngModel)]="provedor.nombre" disabled placeholder="Nombre del cliente">
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.nombre.valid" ></i>
+              <i class="fa fa-exclamation-circle uncheck"  *ngIf="ProveedoresForm.controls.nombre.invalid && ProveedoresForm.controls.nombre.touched"></i>
+
+            </div>
+            <p class="alert alert-danger"  *ngIf="ProveedoresForm.controls.nombre.invalid && ProveedoresForm.controls.nombre.touched">
+              POR FAVOR INTRODUZCA SUS NOMBRE !!
+            </p>
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="RFC" for="RFC" style="width:120px;">RFC</span>
+
+              <input type="text" class="form-control" id="RFC" formControlName="RFC" [(ngModel)]="provedor.RFC" disabled placeholder="RFC del cliente">
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.RFC.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.RFC.invalid && ProveedoresForm.controls.RFC.touched" ></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.RFC.invalid && ProveedoresForm.controls.RFC.touched">
+              POR FAVOR INTRODUZCA SUS RFC !!
+            </p>
+          </div>
+
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="Direccion" for="Direccion" style="width:120px;">Direccion</span>
+
+              <input type="text" class="form-control" id="Direccion" formControlName="Direccion" [(ngModel)]="provedor.Direccion" disabled placeholder="Direccion del cliente">
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.Direccion.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.Direccion.invalid && ProveedoresForm.controls.Direccion.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.Direccion.invalid && ProveedoresForm.controls.Direccion.touched">
+              POR FAVOR INTRODUZCA SU DIRECCION !!
+            </p>
+          </div>
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="Telefono" for="Telefono" style="width:120px;">Telefono</span>
+
+              <input type="number" class="form-control" id="Telefono" formControlName="Telefono" [(ngModel)]="provedor.Telefono" placeholder="Telefono del cliente">
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.Telefono.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.Telefono.invalid && ProveedoresForm.controls.Telefono.touched"></i>
+
+
+            </div>
+            <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.Telefono.invalid && ProveedoresForm.controls.Telefono.touched">
+              POR FAVOR INTRODUZCA SU Telefono CORRECTA !!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="ui-g-12">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="correo" for="correo" style="width:120px;">CORREO</span>
+
+              <input type="text" class="form-control" id="correo" formControlName="correo" [(ngModel)]="provedor.correo" required email placeholder="ejemplo@sisalia.com" placeholder="CORREO">
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.correo.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.correo.invalid && ProveedoresForm.controls.correo.touched"></i>
+
+            </div>
+            <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.correo.invalid && ProveedoresForm.controls.correo.touched">
+              POR FAVOR INTRODUZCA SU CORREO !!
+            </p>
+          </div>
+
+          <div class="ui-g-12">
+            <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+              <span class="ui-inputgroup-addon" id="Localidad" for="Localidad" style="width:120px;"> LOCALIDAD</span>
+              <input type="text" class="form-control" id="Localidad" formControlName="Localidad" [(ngModel)]="provedor.Localidad" disabled placeholder=" Localidad del proveedor">
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.Localidad.valid" ></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.Localidad.invalid && ProveedoresForm.controls.Localidad.touched"></i>
+
+
+            </div>
+            <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.Localidad.invalid && ProveedoresForm.controls.Localidad.touched">
+              POR FAVOR INTRODUZCA UNA LOCALIDAD !!
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="ui-g-12 ui-md-6">
+            <div class="ui-inputgroup"  style="font-size:18px;">                                
+                <span class="ui-inputgroup-addon" for="Estatus" style="width:120px;">ESTATUS</span>
+                <!--<p-dropdown [options]="Estatus"  formControlName="Estatus" ></p-dropdown>-->
+                <select class="form-control" id="Estatus" formControlName="Estatus" [(ngModel)]="provedor.Estatus">
+                  <option value="">SELECCIONE UN ESTATUS</option>
+                  <option *ngFor="let Estatus of Estatu"
+                    [value]="Estatus"> {{Estatus}}
+                  </option>
+                </select>
+                <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.Estatus.valid"></i>
+                <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.Estatus.invalid && ProveedoresForm.controls.Estatus.touched"></i>
+          
+              </div>
+              <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.Estatus.invalid && ProveedoresForm.controls.Estatus.touched">
+                  POR FAVOR INTRODUZCA SU ESTATUS !!
+                </p>
+          </div>
+    
+        <div class="ui-g-12 ui-md-6">
+          <div class="ui-inputgroup"  style="font-size:18px;">                                
+              <span class="ui-inputgroup-addon" for="Estado" style="width:120px;">ESTADO</span>
+            <!-- <p-dropdown [options]="Estado" [(ngModel)]="provedor.Estado" formControlName="Estado" ></p-dropdown>
+            -->
+            <select class="form-control" id="Estado" [(ngModel)]="provedor.Estado" formControlName="Estado" disabled>
+              <option value="">SELECCIONE UN ESTADO</option>
+              <option *ngFor="let Estado of estados"
+                [value]="Estado"> {{Estado}}
+              </option>
+            </select>
+              <i class="fa fa-check-circle" *ngIf="ProveedoresForm.controls.Estado.valid"></i>
+              <i class="fa fa-exclamation-circle uncheck" *ngIf="ProveedoresForm.controls.Estado.invalid && ProveedoresForm.controls.Estado.touched"></i>
+        
+            </div>
+            <p class="alert alert-danger" *ngIf="ProveedoresForm.controls.Estado.invalid && ProveedoresForm.controls.Estado.touched">
+                POR FAVOR INTRODUZCA SU ESTADO !!
+              </p>
+        </div>
+        </div>
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!ProveedoresForm.valid"
+          >GUARDAR CAMBIOS
+          </button>
+          <p class="alert alert-danger" *ngIf="!ProveedoresForm.valid"> POR FAVOR COMPLETE LOS CAMPOS!!</p>
+        </div>
+        <hr>
+      
+        <a class="btn btn-outline-danger text-right" routerLink="/admin-proveedores/proveedores" routerLinkActive="Active">
+          REGRESAR
+          </a>
+      </form>
+      <pre>valor del formulario: {{ ProveedoresForm.value | json }}</pre>       
+      <pre>Estado del formulario: {{ ProveedoresForm.status | json }}</pre>       
+      <hr>
+      <pre>{{ provedor | json }}</pre> 
+    </div>
+  </div>
+</div>

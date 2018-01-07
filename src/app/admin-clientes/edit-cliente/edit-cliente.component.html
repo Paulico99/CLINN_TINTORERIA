@@ -1,0 +1,140 @@
+<app-admin-admin></app-admin-admin>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <div class="container-fluid-responsive">
+        <div class="card form-group">
+                <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Modificar cuenta</h4>
+              <div class="card-body">
+                  <h4 class="card-title">Datos del usuario</h4>
+     <form [formGroup]="registroCliente" (ngSubmit)="onSubmit()">
+            <div class="row">
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup" style="font-size:16px;">
+                                <span class="input-group-addon" id="nombre" for="nombre" style="width:120px;">Nombre</span>
+                    
+                                    <input type="text" class="form-control" formControlName="nombre" [(ngModel)]="client.nombre" disabled placeholder="Nombre del Cliente">
+                                    <i class="fa fa-check-circle" *ngIf="registroCliente.controls.nombre.valid"></i>
+                                    <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.nombre.invalid && registroCliente.controls.nombre.touched"></i>
+
+                        </div>
+                        <p class="alert alert-danger" *ngIf="registroCliente.controls.nombre.invalid && registroCliente.controls.nombre.touched">
+                                POR FAVOR INTRODUZCA SU NOMBRE  !!
+                        </p>
+                    </div>
+                  <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                        <span class="ui-inputgroup-addon" id="apellidos" for="apellidos" style="width:120px;">Apellidos</span>
+              
+                        <input type="text" class="form-control" id="apellidos" formControlName="apellidos" [(ngModel)]="client.apellidos" disabled  placeholder="Apellidos del cliente">
+                        <i class="fa fa-check-circle" *ngIf="registroCliente.controls.apellidos.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.apellidos.invalid && registroCliente.controls.apellidos.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.apellidos.invalid && registroCliente.controls.apellidos.touched">
+                        POR FAVOR INTRODUZCA SUS APELLIDOS  !!
+                    </p>
+            </div>
+        
+            <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="telefono" for="telefono" style="width:120px;">Telefono</span>                
+                           
+                                <input type="text" class="form-control" id="telefono" formControlName="telefono" [(ngModel)]="client.telefono" placeholder="Telefono del cliente">
+                                <i class="fa fa-check-circle" *ngIf="registroCliente.controls.telefono.valid"></i>
+                                <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.telefono.invalid && registroCliente.controls.telefono.touched"></i>
+                               
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.telefono.invalid && registroCliente.controls.telefono.touched">
+                        POR FAVOR INTRODUZCA SU TELEFONO  !!
+                        </p>
+            </div>
+            <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="email" for="email" style="width:120px;">Email</span>                    
+                   
+                        <input type="text" class="form-control" id="email"  formControlName="email" [(ngModel)]="client.email" required email placeholder="ejemplo@sisalia.com">
+                        <i class="fa fa-check-circle" *ngIf="registroCliente.controls.email.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.email.invalid && registroCliente.controls.email.touched"></i>
+        
+
+                </div>
+                <p class="alert alert-danger" *ngIf="registroCliente.controls.email.invalid && registroCliente.controls.email.touched">
+                        POR FAVOR INTRODUZCA UNA DIRECCION DE EMAIL CORRECTA !!
+                    </p>
+           </div> 
+        </div>
+        <div class="row">
+                
+        <div class="ui-g-12">
+                <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="direccion" for="direccion" style="width:120px;">Direccion</span>
+               
+                            <input type="text" class="form-control" id="direccion" formControlName="direccion"  [(ngModel)]="client.direccion" placeholder="Calle, #numero y colonia">
+                            <i class="fa fa-check-circle" *ngIf="registroCliente.controls.direccion.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.direccion.invalid && registroCliente.controls.direccion.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.direccion.invalid && registroCliente.controls.direccion.touched">
+                        POR FAVOR INTRODUZCA SU DIRECCION  !!
+                </p>
+            </div>
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="password" for="password" style="width:130px;">Contraseña</span>
+                            <input type="password" class="form-control" id="password" formControlName="password" [(ngModel)]="client.password" placeholder="Contraseña del cliente" />
+                            <p class="alert alert-warning" *ngIf="erroresForm.password">{{ erroresForm.password }} </p>
+                            
+                            <i class="fa fa-check-circle" *ngIf="registroCliente.controls.password.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.password.invalid && registroCliente.controls.password.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.password.invalid && registroCliente.controls.password.touched">
+                        POR FAVOR INTRODUZCA UNA CONTRASEÑA  !!
+                    </p>
+                    </div>
+                <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
+                            <span class="ui-inputgroup-addon" id="contrasena" for="contrasena" style="width:130px;"> Contraseña</span>
+                            <input type="password" class="form-control" id="contrasena" formControlName="contrasena" [(ngModel)]="client.contrasena" placeholder="Contraseña del cliente">
+                            <i class="fa fa-check-circle" *ngIf="registroCliente.controls.contrasena.valid"></i>
+                            <i class="fa fa-exclamation-circle uncheck" *ngIf="registroCliente.controls.contrasena.invalid && registroCliente.controls.contrasena.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroCliente.controls.contrasena.invalid && registroCliente.controls.contrasena.touched">
+                        POR FAVOR INTRODUZCA UNA CONTRASEÑA  !!
+                    </p>
+                </div>
+                        
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Status</span>
+                        <p-dropdown [options]="estatus" [(ngModel)]="client.estatus" formControlName="estatus" ></p-dropdown>
+                        </div>
+                    </div>
+                  
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Persona</span>
+                        <p-dropdown [options]="tipo_persona" [(ngModel)]="client.tipo_persona" formControlName="tipo_persona"></p-dropdown>
+                        </div>
+                    </div>
+        </div>
+        <div class="col-md-12 text-center"> 
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!registroCliente.valid">GUARDAR CUENTA
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroCliente.valid">POR FAVOR COMPLETE TODOS LOS CAMPOS</p>
+        </div>
+          <hr>
+          <button type="submit" class="btn btn-outline-danger text-right" routerLink="/admin-clientes/clientes" style="font-size:20px;">REGRESAR
+        </button>
+      </form>     
+      <pre>valor del formulario: {{ registroCliente.value | json }}</pre>       
+      <pre>Estado del formulario: {{ registroCliente.status | json }}</pre>       
+      <hr>
+      <pre>{{ client | json }}</pre> 
+              </div>
+        </div>
+    </div>
+ 

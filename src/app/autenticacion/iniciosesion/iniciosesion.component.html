@@ -1,0 +1,82 @@
+
+  <!--
+  <div class="card text-left" style="width: 500px;">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Iniciar Sesion</h4>
+    <div class="card-body">
+      <h4 class="card-title">Usuario</h4>
+      <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+        <div class="col-md-12" style="text-align:center;">
+          <img class="rounded-circle" src="/assets/LOGIN.png" style="width:40%; height:40%;"/>
+             
+          <h3>Correo electronico</h3><br />
+              <input type="text" class="form-control" id="inputemail" formControlName="email" placeholder="Correo Electronico" required autofocus/><br>
+              <p class="alert alert-danger" *ngIf="erroresForm.email">{{ erroresForm.email }} </p>
+              <h3>Contraseña</h3>
+              <input type="password"  class="form-control" id="inputpassword" formControlName="password" placeholder="Contraseña" required/><br>
+              <p class="alert alert-warning" *ngIf="erroresForm.password">{{ erroresForm.password }} </p>
+              
+        </div>
+          <hr>
+          <div class="col-md-12 text-center" > 
+              <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;">Cancelar</button>
+              <a routerLink="/Usuarios/admin-usuario" routerLinkActive="Active"><button type="button" [disabled]="!loginForm.invalid" class="btn btn-outline-primary" style="font-size:20px;">Entrar</button></a>
+          </div>
+        </form>
+    </div>
+</div>
+-->
+<div class="card text-left" style="width: 500px;">
+  <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Iniciar Sesion</h4>
+  <div class="card-body">
+    <h4 class="card-title">Usuario</h4>
+      <form [formGroup]="loginForm"  (ngSubmit)="onSubmit()">
+        <div class="col-md-12" style="text-align:center;">          
+          <img class="rounded-circle" src="/assets/LOGIN.png" style="width:40%; height:40%;"/>
+          
+          <h3>Correo electronico</h3>
+          <input type="email" id="inputemail" class="form-control" formControlName="email" required autofocus>
+          <p class="alert alert-danger" *ngIf="erroresForm.email">{{ erroresForm.email }} </p>
+          <h3>Contraseña</h3>
+          <input type="password" id="inputPassword" class="form-control" formControlName="password" required>
+          <p class="alert alert-warning" *ngIf="erroresForm.password">{{ erroresForm.password }} </p>
+          <br>
+          <p class="alert alert-warning" *ngIf="mensaje">EL USUARIO O CONTRASEÑA NO ES CORRECTO</p>
+          
+          <hr>
+        </div>
+        <div class="col-md-12 text-center" > 
+          
+          <button type="submit" class="btn btn-outline-primary" [disabled]="!loginForm.invalid" *ngIf="!autenticando" style="font-size:20px;">Entrar</button>
+          <a  routerLink="/inicio"><button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size:20px;">Cancelar</button></a>
+          <p>Recordar Cuenta</p>
+          
+          <div class="alert alert-success" role="alert" *ngIf="autenticando">
+            <strong>Comprobando Cuenta!</strong> Espere un momento
+        </div>
+      
+        </div>          
+      </form>
+      </div>
+  </div>
+<!--
+  <div class="modal fade" *ngIf="autenticando"  tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" *ngIf="autenticando">Autenticando</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row center">
+            <h1>Espere un Momento...</h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->

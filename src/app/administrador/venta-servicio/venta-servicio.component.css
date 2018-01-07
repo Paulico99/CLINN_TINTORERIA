@@ -1,0 +1,15 @@
+.ui-dropdown    {
+    background-color:black;
+  }
+  .ui-dropdown-label  {
+    color:white;
+  }
+  
+  .ui-dropdown-label:hover{
+    color:red
+  }
+  .ui-dropdown-item   {
+    color:black;
+    background-color:black;
+    font-size: 30px;
+  }

@@ -1,0 +1,59 @@
+<app-admin-admin></app-admin-admin>
+
+<div class="card">
+    <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">EMPLEADOS</h4>
+    <div class="card-body">                
+          <p style="color:rgb(32, 31, 31); font-size:20px;">{{ mensaje }}</p>
+          <h3 style="color:rgb(26, 24, 24);">LISTADO DE EMPLEADOS</h3>
+          <br>
+          <div class="row">
+                <div class="col-sm-6">
+                    <input type="search" class="form-control" placeholder="Buscar un empleado.." [formControl]="campoBusqueda"><button pButton type="button" label="Buscar"></button>                                            
+                </div>
+                <div class="col-sm-6">
+                    <a class="btn btn-outline-primary float-md-right" routerLink="/addempleados" routerLinkActive="Active">
+                    AÑADIR NUEVO EMPLEADO
+                    </a>
+                </div><br><br>
+          </div><br>
+          <div *ngIf="cargando" class="text-center" style="padding-top: 60px;">
+                <img src="../../../assets/62159.gif">
+            </div>
+    <div *ngIf="!cargando">
+        <table class="table table-responsive" style="background-color:rgba(254, 255, 255, 0.788); font-size:18px;">         
+              <thead class="thead-inverse" style="background-color:rgba(230, 234, 236, 0.712);">
+            
+                  <tr class="filters">
+                      <th>NOMBRES</th>
+                      <th>RFC</th>
+                      <th></th>
+                      <th>PUESTO</th>
+                      <th>DIRECCION</th>
+                      <th>NSS</th>
+                      <th>TELEFONO</th>
+                      <th>ESTADO</th>
+                      <th></th>
+                  </tr>
+              </thead>
+          <tbody style="background-color:white;">
+              <tr *ngFor="let empleado of Empleados">
+                  <td>{{ empleado.Nombre}}</td>
+                  <td>{{ empleado.RFC }}<td>
+                  <td>{{ empleado.nombre}}</td>
+                  <td>{{ empleado.Direccion}}</td>
+                  <td>{{ empleado.NSS}}</td>
+                  <td>{{ empleado.Telefono }}</td>
+                  <b><td style="background-color:green; color:white;">{{ empleado.Estatus}}</td></b>
+                  <td class="text-center">
+                    <button type="button" class="btn btn-outline-primary" routerLink="/admin-empleados/editempleados/{{ empleado.id }}">MODIFICAR</button>
+                    <button type="button" class="btn btn-danger" (click)="eliminarEmpleado(empleado.id)">ELIMINAR</button>
+                  </td>
+              </tr>
+          </tbody>
+          </table>
+    </div>
+    </div>
+</div>
+<div *ngIf="noresultados">
+        <h2>NO EXISTE NINGUNA COINCIDENCIA</h2>
+    </div>
