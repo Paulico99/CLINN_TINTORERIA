@@ -38,19 +38,10 @@ export class AddfacturasComponent implements OnInit {
   registroFactura : FormGroup;
   factura: any;
 
-  //CALENDARIO
-
-  invalidDates: Array<Date>
-
-
-   //VARIABLES CALENDARIO
-   date10: Date;
-   dates: Date[];
-   rangeDates: Date[];
-   minDate: Date;
-   maxDate: Date;
-   es: any;
-   tr: any;
+  costo: any;
+  iva: any;
+  subtotal: any = 0;
+  total: any = 0;
 
   saveRegistro(){
     const saveRegistro = {
@@ -58,6 +49,7 @@ export class AddfacturasComponent implements OnInit {
       id_producto: this.registroFactura.get('id_producto').value,
       fecha: this.registroFactura.get('fecha').value,
       iva: this.registroFactura.get('iva').value,
+      costo: this.registroFactura.get('costo').value,
       subtotal: this.registroFactura.get('subtotal').value,      
       total: this.registroFactura.get('total').value,
      
@@ -86,55 +78,33 @@ export class AddfacturasComponent implements OnInit {
     
   }
 
-  onSubmit() {
-    this.factura = this.saveRegistro();
-    this.facturasService.postFacturas(this.factura)
-      .subscribe(newpres => { })
-    this.registroFactura.reset();
+  onSubmit(){
+    this.Facturas = this.saveRegistro();
+    this.facturasService.postFacturas(this.Facturas).subscribe(newpres => {this.router.navigate(['/admin-compras/facturas'])})
   }
 
   ngOnInit() {
     this.registroFactura = this.rc.group({
-      id_proveedor : ['', Validators.required],
+      id_proveedor : ['25', Validators.required],
       id_producto: ['', Validators.required],
       fecha: ['', Validators.required],
+      costo: ['', Validators.required],
       iva: ['', Validators.required],      
-      subtotal: ['', Validators.required],
-      total: ['', Validators.required],
+      subtotal: this.subtotal,
+      total: this.total,
       
     });
-    this.es = {
-      firstDayOfWeek: 1,
-      dayNames: [ "domingo","lunes","martes","miércoles","jueves","viernes","sábado" ],
-      dayNamesShort: [ "dom","lun","mar","mié","jue","vie","sáb" ],
-      dayNamesMin: [ "D","L","M","X","J","V","S" ],
-      monthNames: [ "enero","febrero","marzo","abril","mayo","junio","julio","agosto","septiembre","octubre","noviembre","diciembre" ],
-      monthNamesShort: [ "ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic" ],
-      today: 'Hoy',
-      clear: 'Borrar',
-  }
-
-  this.tr = {
-    firstDayOfWeek : 1
+    this.onChanges();
+  
 }
 
-let today = new Date();
-let month = today.getMonth();
-let year = today.getFullYear();
-let prevMonth = (month === 0) ? 11 : month -1;
-let prevYear = (prevMonth === 11) ? year - 1 : year;
-let nextMonth = (month === 11) ? 0 : month + 1;
-let nextYear = (nextMonth === 0) ? year + 1 : year;
-this.minDate = new Date();
-this.minDate.setMonth(prevMonth);
-this.minDate.setFullYear(prevYear);
-this.maxDate = new Date();
-this.maxDate.setMonth(nextMonth);
-this.maxDate.setFullYear(nextYear);
+onChanges() {
+  this.registroFactura.valueChanges.subscribe(valor => {
+    this.costo = valor.costo;
+    this.iva = valor.iva;
+    this.registroFactura.value.subtotal = this.costo * this.iva;
+    this.registroFactura.value.total = this.costo + (this.costo * this.iva);
+  });
+}
 
-
-let invalidDate = new Date();
-invalidDate.setDate(today.getDate() - 1);
-this.invalidDates = [today,invalidDate];
-  }
 }

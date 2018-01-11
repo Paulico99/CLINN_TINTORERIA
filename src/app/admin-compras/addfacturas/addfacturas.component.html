@@ -8,7 +8,8 @@
       <h4 class="card-title">Añadir Factura</h4>
       <form [formGroup]="registroFactura" (ngSubmit)="onSubmit()">
        <div class="row">
-          <div class="ui-g-12 ui-md-6">
+        <!--  
+        <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup" style="font-size:16px;">
                 <span class="ui-inputgroup-addon" style="width:150px;">Proveedor</span>   
                 <select class="form-control" id="id_proveedor" [(ngModel)]="id_proveedor" formControlName="id_proveedor" >
@@ -28,6 +29,7 @@
             <a routerLink="/add-registrar" class="btn btn-outline-primary text-center" style="font-size:20px;">Registrar Proveedor</a>              
             
           </div>
+        -->
           <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
                 <span class="ui-inputgroup-addon" style="width:150px;">Producto</span>   
@@ -49,23 +51,6 @@
           </div>
 
           <div class="ui-g-12 ui-md-6">
-            <div class="ui-inputgroup inputgroup-lg" style="font-size:17px;">
-                                                                             
-                    <span class="ui-inputgroup-addon" style="width:90px;">Fecha</span>
-                    <p-calendar [(ngModel)]="date10" [locale]="es" dateFormat="yy/mm/dd" formControlName="fecha"></p-calendar>
-                    
-                    <!--
-                    <p-calendar [(ngModel)]="date10" dateFormat="yy.mm.dd" formControlName="fecha">
-                        <ng-template pTemplate="date" let-date>
-                            <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#7cc67c' : 'inherit'}" style="border-radius:50%">{{date.day}}</span>
-                        </ng-template>
-                    </p-calendar>
-                  -->
-        
-            </div>
-      
-          </div>
-          <div class="ui-g-12 ui-md-6">
             <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
               <span class="ui-inputgroup-addon" id="iva" for="iva" style="width:120px;">IVA</span>
               <select class="form-control" id="iva" formControlName="iva">
@@ -83,13 +68,48 @@
               POR FAVOR INTRODUZCA SU IVA  !!
             </p>
           </div>
+          <div class="ui-g-12 ui-md-6">
+              <div class="ui-inputgroup inputgroup-lg" style="font-size:17px;">
+                                                                               
+                      <span class="ui-inputgroup-addon" style="width:90px;">Fecha</span>
+                      <p-inputMask mask="99/99/9999" [(ngModel)]="fecha" formControlName="fecha" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+                      <i class="fa fa-check-circle" *ngIf="registroFactura.controls.fecha.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroFactura.controls.fecha.invalid && registroFactura.controls.fecha.touched"></i>
+                      <!--
+                      <p-calendar [(ngModel)]="date10" dateFormat="yy.mm.dd" formControlName="fecha">
+                          <ng-template pTemplate="date" let-date>
+                              <span [ngStyle]="{backgroundColor: (date.day < 21 && date.day > 10) ? '#7cc67c' : 'inherit'}" style="border-radius:50%">{{date.day}}</span>
+                          </ng-template>
+                      </p-calendar>
+                    -->
+          
+              </div>
+              <p class="alert alert-danger" *ngIf="registroFactura.controls.fecha.invalid && registroFactura.controls.fecha.touched">
+                  POR FAVOR INTRODUZCA SU FECHA  !!
+                </p>
+            </div>
+
+            <div class="ui-g-12 ui-md-6">
+                <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Costo</span>
+                      <input type="number" class="form-control" id="costo" formControlName="costo" placeholder=".00">
+                      <i class="fa fa-check-circle" *ngIf="registroFactura.controls.costo.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroFactura.controls.costo.invalid && registroFactura.controls.costo.touched"></i>
+            
+                </div>
+                <p class="alert alert-danger" *ngIf="registroFactura.controls.costo.invalid && registroFactura.controls.costo.touched">
+                    POR FAVOR INTRODUZCA UNA COSTO  !!
+                </p>
+            </div>
+            
         </div>
         <div class="row">
+          
             <div class="ui-g-12 ui-md-6">
                 <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
                   <span class="ui-inputgroup-addon" id="subtotal" for="subtotal" style="width:120px;">Subtotal</span>
     
-                  <input type="number" class="form-control" id="subtotal" formControlName="subtotal" placeholder="subtotal">
+                  <input type="number" class="form-control" id="subtotal" formControlName="subtotal" placeholder="subtotal" [(ngModel)]="registroFactura.value.subtotal" disabled>
           
     
                 </div>
@@ -99,7 +119,7 @@
                   <div class="ui-inputgroup inputgroup-lg" style="font-size:16px;">
                     <span class="ui-inputgroup-addon" id="total" for="total" style="width:120px;">Total</span>
       
-                    <input type="number" class="form-control" id="total" formControlName="total" placeholder="total">
+                    <input type="number" class="form-control" id="total" formControlName="total" placeholder="total" [(ngModel)]="registroFactura.value.total" disabled>
                 
       
                   </div>

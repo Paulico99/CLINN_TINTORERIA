@@ -48,6 +48,8 @@ import { ClientesComponent } from './admin-clientes/clientes/clientes.component'
 import { ClientesService } from './servicios/clientes.service';
 import { ProductosService } from './servicios/productos.service';
 import { ServiciossService } from './servicios/servicioss.service';
+import { PresupuestosService} from './servicios/presupuestos.service';
+
 
 import { HttpModule } from '@angular/http';
 
@@ -80,6 +82,9 @@ import { FacturasComponent } from './admin-compras/facturas/facturas.component';
 import { AddfacturasComponent } from './admin-compras/addfacturas/addfacturas.component';
 import { EditfacturasComponent } from './admin-compras/editfacturas/editfacturas.component';
 import { FacturasService } from './servicios/facturas.service';
+import { PresupuestosComponent } from './admin-presupuestos/presupuestos/presupuestos.component';
+import { AddpresupuestosComponent } from './admin-presupuestos/addpresupuestos/addpresupuestos.component';
+import { EditpresupuestosComponent } from './admin-presupuestos/editpresupuestos/editpresupuestos.component';
 
 const routes: Routes = [
   { path: 'inicio', component: InicioComponent },
@@ -121,6 +126,9 @@ const routes: Routes = [
   { path: 'admin-compras/addfacturas', component: AddfacturasComponent, canActivate: [GuardService]},
   { path: 'admin-compras/editfacturas/:ID',component: EditfacturasComponent, canActivate: [GuardService]},
   
+  { path: 'admin-presupuesto/presupuesto', component: PresupuestosComponent , canActivate: [GuardService]},
+  { path: 'admin-presupuesto/addpresupuesto', component: AddpresupuestosComponent , canActivate: [GuardService]},
+  { path: 'admin-presupuesto/editpresupuesto/:idpresupuesto', component: EditpresupuestosComponent , canActivate: [GuardService]},
   
   { path: '**', component: InicioComponent},
   
@@ -167,7 +175,10 @@ const routes: Routes = [
     AbonoComponent,
     FacturasComponent,
     AddfacturasComponent,
-    EditfacturasComponent
+    EditfacturasComponent,
+    PresupuestosComponent,
+    AddpresupuestosComponent,
+    EditpresupuestosComponent
 
   ],
   imports: [
@@ -205,7 +216,8 @@ const routes: Routes = [
     VentasService,
     PrendasService,
     ComprasService,
-    FacturasService
+    FacturasService,
+    PresupuestosService
     ],
   bootstrap: [AppComponent]
 })

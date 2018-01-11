@@ -8,24 +8,24 @@
     </li>
 -->
     <li class="nav-item dropdown" *ngIf="isAuth() && isAdmin()">
-            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink2" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active"  id="navbarDropdownMenuLink2" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-user" aria-hidden="true"></i> Ventas
             </a>
-            <div class="dropdown-menu" style="font-size:18px;" aria-labelledby="navbarDropdownMenuLink2">
-              <a class="dropdown-item" style="font-size:18px;" routerLink="/administrador/venta-servicio"><i class="fa fa-print" aria-hidden="true"></i> Venta Pedido</a>
-              <a class="dropdown-item" style="font-size:18px;" routerLink="/administrador/admin-pedidos"><i class="fa fa-money" aria-hidden="true"></i> Pedidos</a>
+            <div class="dropdown-menu active" style="font-size:18px;" aria-labelledby="navbarDropdownMenuLink2">
+              <a class="dropdown-item active" style="font-size:18px;" routerLink="/administrador/venta-servicio"><i class="fa fa-print" aria-hidden="true"></i> Venta Pedido</a>
+              <a class="dropdown-item active" style="font-size:18px;" routerLink="/administrador/admin-pedidos"><i class="fa fa-money" aria-hidden="true"></i> Pedidos</a>
               
             </div>
           </li>
 
     <li class="nav-item dropdown" *ngIf="isAuth() && isAdmin()">
-            <a class="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a class="nav-link dropdown-toggle active"  id="navbarDropdownMenuLink" style="font-size:18px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i> Compras
             </a>
-            <div class="dropdown-menu" style="font-size:18px;" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" style="font-size:18px;" routerLink="/admin-compras/facturas"><i class="fa fa-print" aria-hidden="true"></i> Facturas</a>
-              <a class="dropdown-item" style="font-size:18px;" routerLink="/admin-proveedores/proveedores"><i class="fa fa-list-alt" aria-hidden="true"></i> Proveedores</a>
-              <a class="dropdown-item" style="font-size:18px;" routerLink="/admin-compras/compras" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Presupuesto</a>
+            <div class="dropdown-menu active" style="font-size:18px;" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item active " style="font-size:18px;" routerLink="/admin-compras/facturas"><i class="fa fa-print" aria-hidden="true"></i> Facturas</a>
+              <a class="dropdown-item active" style="font-size:18px;" routerLink="/admin-proveedores/proveedores"><i class="fa fa-list-alt" aria-hidden="true"></i> Proveedores</a>
+              <a class="dropdown-item active" style="font-size:18px;" routerLink="/admin-presupuesto/presupuesto" ><i class="fa fa-shopping-cart" aria-hidden="true"></i> Presupuesto</a>
             </div>
           </li>
     <!--
@@ -45,8 +45,8 @@
         <a class="nav-link " routerLink="/admin-proveedores/proveedores" style="font-size:18px;"><i class="fa fa-list-alt" aria-hidden="true"></i> Proveedor</a>
     </li>
 -->
-    <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
-        <a class="nav-link " routerLink="/admin-empleados/empleados" style="font-size:18px;"><i class="fa fa-address-book-o" aria-hidden="true"></i> Empleados</a>
+    <li class="nav-item " *ngIf="isAuth()  && isAdmin()">
+        <a class="nav-link  " routerLink="/admin-empleados/empleados" style="font-size:18px;"><i class="fa fa-address-book-o" aria-hidden="true"></i> Empleados</a>
     </li>
     <li class="nav-item" *ngIf="isAuth()  && isAdmin()">
         <a class="nav-link " routerLink="/admin-clientes/clientes" style="font-size:18px;"><i class="fa fa-id-card-o" aria-hidden="true"></i> Clientes </a>

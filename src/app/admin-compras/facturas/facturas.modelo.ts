@@ -2,7 +2,8 @@ export class Factura {
     public ID: number;
     public id_proveedor: number;
     public id_producto: number;
-    public fecha: Date;
+    public fecha: string;
+    public costo: number;
     public iva: number;
     public subtotal: number;
     public total: number;
@@ -13,7 +14,8 @@ export class Factura {
         ID?: number,
         id_proveedor?: number,
         id_producto?: number,
-        fecha?: Date,
+        fecha?: string,
+        costo?: number,
         iva?: number,
         subtotal?: number,
         total?: number)
@@ -22,6 +24,7 @@ export class Factura {
             this.id_proveedor = id_proveedor;
             this.id_producto = id_producto;
             this.fecha = fecha;
+            this.costo = costo;
             this.iva = iva;
             this.subtotal = subtotal;
             this.total = total;

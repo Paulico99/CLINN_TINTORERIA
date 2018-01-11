@@ -1,0 +1,133 @@
+<app-admin-admin></app-admin-admin>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <div class="container-fluid-responsive">
+        <div class="card form-group">
+                <h4 class="card-header" style="background-color:rgba(2, 107, 168, 0.712);">Añadir Presupuesto</h4>
+              <div class="card-body">
+                  <h4 class="card-title">Datos del Presupuesto</h4>
+     <form [formGroup]="registroPresupuesto" (ngSubmit)="onSubmit()">
+            <div class="row">
+                    
+                        <div class="ui-g-12 ui-md-6">
+                            <div class="ui-inputgroup"  style="font-size:18px;">                                
+                                    <span class="ui-inputgroup-addon" style="width:120px;">Proveedor</span>
+                                <select class="form-control" id="id_proveedor" formControlName="id_proveedor">
+                                    <option value="">SELECCIONE UN PROVEEDOR</option>
+                                    <option *ngFor="let id_proveedor of Proveedores" value="{{id_proveedor.Id}}">
+                                        {{id_proveedor.nombre}}                           
+                                    </option>
+                                </select>
+                                  <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.id_proveedor.valid"></i>
+                                  <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.id_proveedor.invalid && registroPresupuesto.controls.id_proveedor.touched"></i>
+                            </div>
+                            <p class="alert alert-danger" *ngIf="registroPresupuesto.controls.id_proveedor.invalid && registroPresupuesto.controls.id_proveedor.touched">
+                                POR FAVOR INTRODUZCA UN PROVEEDOR  !!
+                            </p>
+                        </div>
+                  
+                  <div class="ui-g-12 ui-md-6">
+                    <div class="ui-inputgroup inputgroup-lg" style="font-size:18px;">
+                        <span class="ui-inputgroup-addon"  style="width:120px;">Producto</span>
+              
+                        <select class="form-control" id="id_producto" formControlName="id_producto">
+                            <option value="">SELECCIONE UN PRODUCTO</option>
+                            <option *ngFor="let id_producto of Productos" value="{{id_producto.ID}}">
+                                {{id_producto.descripcion}}                           
+                            </option>
+                        </select>
+                        <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.id_producto.valid"></i>
+                        <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.id_producto.invalid && registroPresupuesto.controls.id_producto.touched"></i>
+
+                    </div>
+                    <p class="alert alert-danger" *ngIf="registroPresupuesto.controls.id_producto.invalid && registroPresupuesto.controls.id_producto.touched">
+                        POR FAVOR INTRODUZCA UN PRODUCTO  !!
+                    </p>
+            </div>
+           
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                            <span class="ui-inputgroup-addon"  style="width:120px;">Fecha</span>
+                                      <!--<input type="number" class="form-control" id="id_producto" formControlName="id_producto" placeholder="id_producto del cliente">-->
+                                      <p-inputMask mask="99/99/9999" [(ngModel)]="fecha" formControlName="fecha" placeholder="99/99/9999" slotChar="mm/dd/yyyy"></p-inputMask>
+                                      <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.fecha.valid"></i>
+                                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.fecha.invalid && registroPresupuesto.controls.fecha.touched"></i>
+                        </div>
+                        <p class="alert alert-danger" *ngIf="registroPresupuesto.controls.fecha.invalid && registroPresupuesto.controls.fecha.touched">
+                            POR FAVOR INTRODUZCA UNA FECHA  !!
+                        </p>
+                    </div>
+                  
+                    <div class="ui-g-12 ui-md-6">
+                        <div class="ui-inputgroup"  style="font-size:18px;">                                
+                                <span class="ui-inputgroup-addon" style="width:120px;">Costo</span>
+                              <input type="number" class="form-control" id="base" formControlName="base" placeholder="Costo">
+                              <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.base.valid"></i>
+                              <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.base.invalid && registroPresupuesto.controls.base.touched"></i>
+                    
+                        </div>
+                        <p class="alert alert-danger" *ngIf="registroPresupuesto.controls.base.invalid && registroPresupuesto.controls.base.touched">
+                            POR FAVOR INTRODUZCA UNA BASE  !!
+                        </p>
+                    </div>
+        </div>
+        <div class="row">
+            <div class="ui-g-12 ui-md-6">
+                <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Tipo IVA</span>
+                        <select class="form-control" id="t_iva" formControlName="t_iva">
+                            <option value="">SELECCIONE UNA IVA</option>
+                            <option value=0> 0 %</option>
+                            <option value=0.11>11 %</option>
+                            <option value=0.16>16 %</option>
+                        </select>
+                      <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.t_iva.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.t_iva.invalid && registroPresupuesto.controls.t_iva.touched"></i>
+            
+                </div>
+                <p class="alert alert-danger" *ngIf="registroPresupuesto.controls.t_iva.invalid && registroPresupuesto.controls.t_iva.touched">
+                    POR FAVOR INTRODUZCA UNA IVA  !!
+                </p>
+            </div>
+              
+            <div class="ui-g-12 ui-md-6">
+                <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Importe</span>
+                      <input type="number" class="form-control" id="importe_iva" formControlName="importe_iva" placeholder="Importe IVA" [(ngModel)]="registroPresupuesto.value.importe_iva" disabled>
+                      <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.importe_iva.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.importe_iva.invalid && registroPresupuesto.controls.importe_iva.touched"></i>
+            
+                </div>
+            </div>
+            
+            <div class="ui-g-12 ui-md-6">
+                <div class="ui-inputgroup"  style="font-size:18px;">                                
+                        <span class="ui-inputgroup-addon" style="width:120px;">Total</span>
+                      <input type="number" class="form-control" id="total_importe" formControlName="total_importe" placeholder="Importe TOTAL" [(ngModel)]="registroPresupuesto.value.total_importe" disabled>
+                      <i class="fa fa-check-circle" *ngIf="registroPresupuesto.controls.total_importe.valid"></i>
+                      <i class="fa fa-exclamation-circle uncheck" *ngIf="registroPresupuesto.controls.total_importe.invalid && registroPresupuesto.controls.importe_iva.touched"></i>
+            
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-12 text-center"> 
+          <button type="submit" class="btn btn-outline-primary" style="font-size:20px;"
+          [disabled]="!registroPresupuesto.valid">Guardar Producto
+          </button>
+          <p class="alert alert-danger" *ngIf="!registroPresupuesto.valid">POR FAVOR COMPLETE TODOS LOS CAMPOS</p>
+        </div>
+          <hr>
+          <button type="submit" class="btn btn-outline-danger text-right" routerLink="/admin-productos/productos" style="font-size:20px;">REGRESAR
+        </button>
+      </form>     
+      <!--
+      <pre>valor del formulario: {{ registroPresupuesto.value | json }}</pre>       
+      <pre>Estado del formulario: {{ registroPresupuesto.status | json }}</pre>       
+      <hr>
+      <pre>{{ cliente | json }}</pre>
+      --> 
+              </div>
+        </div>
+    </div>

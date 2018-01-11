@@ -19,6 +19,7 @@ var Compras = require('./routes/Compras');
 var Prendas =require('./routes/Prendas');
 var Compras2 = require('./routes/Compras2')
 var Facturas = require('./routes/Facturas')
+var Presupuestos = require('./routes/Presupuestos');
 
 //var index = require('./routes/index');
 var users = require('./routes/users');
@@ -68,6 +69,7 @@ app.use('/detalle_ventas', detalle_ventas);
 app.use('/Prendas',Prendas);
 app.use('/Compras2',Compras2);
 app.use('/Facturas', Facturas);
+app.use('/Presupuestos', Presupuestos);
 
 
 // catch 404 and forward to error handler

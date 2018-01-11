@@ -29,9 +29,10 @@
             
                   <tr class="filters">
                       <th>FOLIO</th>
-                      <th>PROVEEDOR</th>
+                      <!--<th>PROVEEDOR</th>-->
                       <th>PRODUCTO</th>
                       <th>FECHA</th>
+                      <th>COSTO</th>
                       <th>IVA</th>
                       <th>SUBTOTAL</th>
                       <th>TOTAL</th>
@@ -44,9 +45,10 @@
           <tbody style="background-color:white;">
               <tr *ngFor="let factura of Facturas">
                   <td>{{ factura.ID}}</td>
-                  <td>{{ factura.nombre}}</td>
+                  <!--<td>{{ factura.nombre}}</td>-->
                   <td>{{ factura.descripcion}}</td>
                   <td>{{ factura.fecha }}</td>
+                  <td>{{ factura.costo}}</td>
                   <td>{{ factura.iva}}</td>
                   <td>{{ factura.subtotal}}</td>
                   <td>{{ factura.total}}</td>
